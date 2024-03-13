@@ -1,0 +1,23 @@
+{
+  "name": "webview",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron .\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "electron": "^29.0.1"
+  },
+  "dependencies": {
+    "@google-cloud/speech": "^6.3.0",
+    "mic": "^2.1.2",
+    "node-record-lpcm16": "^1.0.1",
+    "react-speech-recognition": "^3.10.0",
+    "tree-kill": "^1.2.2",
+    "vosk": "^0.3.39"
+  }
+}

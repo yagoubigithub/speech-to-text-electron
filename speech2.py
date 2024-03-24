@@ -6,8 +6,8 @@ from vosk import Model, KaldiRecognizer
 import pyaudio
 from queue import Queue
 
-import threading
-import time
+
+
 
 model = Model("vosk-model-small-en-us-0.15")
 recognizer = KaldiRecognizer(model, 16000)

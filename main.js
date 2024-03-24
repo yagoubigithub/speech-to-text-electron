@@ -5,7 +5,7 @@ const { app, BrowserWindow , session , systemPreferences} = require('electron/ma
 const {execFile}  = require("child_process")
 
 const path = require("path");
-const fs = require("fs")
+const fs = require("fs");
 
 const kill = require('tree-kill');
 
@@ -14,6 +14,7 @@ let python;
 
 function createWindow () {
   const win = new BrowserWindow({
+    show : false,
     width: 800,
     height: 600,
     webPreferences: {
@@ -26,18 +27,31 @@ function createWindow () {
 
 // win.loadURL("http://localhost:3000")
 
-win.on("close" , ()=>{
-  kill(python.pid)
-})
+// win.on("close" , ()=>{
+  
+//   kill(python.pid, 'SIGKILL', function(err) {
+//     // Do things
+//     console.log(err)
+
+//     fs.writeFileSync("error.txt"  ,err.message)
+//     app.quit()
+//   app.exit(0)
+// });
+  
+// })
 
 
 python = execFile(path.join(__dirname , "speech2.exe"), [],
 (error, stdout, stderr) => {
     if (error) {
-        throw error;
+      console.log(error)
+        
     }
     console.log(stdout);
+    console.log(stderr);
+   
 });
+win.show()
 
 
 
@@ -46,16 +60,6 @@ python = execFile(path.join(__dirname , "speech2.exe"), [],
 app.whenReady().then(() => {
   createWindow()
 
-  app.on('activate', () => {
-    if (BrowserWindow.getAllWindows().length === 0) {
-      createWindow()
-    }
-  })
+ 
 })
 
-app.on('window-all-closed', () => {
-  if (process.platform !== 'darwin') {
-    app.quit()
-  }
-  kill(python.pid)
-})

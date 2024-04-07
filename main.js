@@ -41,16 +41,16 @@ function createWindow () {
 // })
 
 
-python = execFile(path.join(__dirname , "speech2.exe"), [],
-(error, stdout, stderr) => {
-    if (error) {
-      console.log(error)
+// python = execFile(path.join(__dirname , "speech2.exe"), [],
+// (error, stdout, stderr) => {
+//     if (error) {
+//       console.log(error)
         
-    }
-    console.log(stdout);
-    console.log(stderr);
+//     }
+//     console.log(stdout);
+//     console.log(stderr);
    
-});
+// });
 win.show()
 
 
